@@ -1,0 +1,4 @@
+Manifesto da Viagem: V001
+Poltrona 1; Carlos Silva; Carlos Silva; INTEIRA; R$ 150.0
+Poltrona 10; Maria Souza; Maria Souza; IDOSO; R$ 0.0
+Poltrona 20; Pedro Santos; Pedro Santos; ESTUDANTE; R$ 75.0

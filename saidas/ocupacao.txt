@@ -1,0 +1,17 @@
+V001 10/12/2026 07:30:00 Maraba -> Belem
+  3/40 (7.5%) R$ 225.00espera: 0
+V002 12/12/2026 10:00:00 Maraba -> Parauapebas
+  2/30 (6.7%) R$ 90.00espera: 0
+V003 15/12/2026 19:00:00 Belem -> Santarem
+  3/44 (6.8%) R$ 160.00espera: 0
+V004 18/12/2026 14:00:00 Maraba -> Imperatriz
+  1/35 (2.9%) R$ 80.00espera: 0
+V005 20/12/2026 08:30:00 Parauapebas -> Canaaa dos Carajas
+  2/25 (8.0%) R$ 67.50espera: 0
+V006 22/12/2026 11:00:00 Belem -> Castanhal
+  2/40 (5.0%) R$ 52.50espera: 0
+V007 24/12/2026 06:00:00 Maraba -> Redencao
+  1/35 (2.9%) R$ 180.00espera: 0
+V008 27/12/2026 21:00:00 Santarem -> Altamira
+  2/38 (5.3%) R$ 330.00espera: 0
+Receita total: R$ 1185.00
