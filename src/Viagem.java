@@ -138,7 +138,7 @@ public class Viagem {
         return this.onibus;
     }
 
-    public ArrayList<Passagem> getPassagem(){
+    public ArrayList<Passagem> getPassagens(){
         return this.passagens;
     }
 

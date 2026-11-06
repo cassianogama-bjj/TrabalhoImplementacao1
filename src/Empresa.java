@@ -14,7 +14,7 @@ public class Empresa {
     }
 
     public void removerViagem(Viagem v){
-        if(v.getPassagem().isEmpty()){
+        if(v.getPassagens().isEmpty()){
             viagens.remove(v);
         }else{
             System.out.println("Erro! Não é possível remover uma viagem que possui passagens vendidas!");

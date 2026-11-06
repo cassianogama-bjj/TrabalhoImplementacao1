@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -13,7 +11,7 @@ public static void main(String[] args) {
 
     Empresa empresa = new Empresa("Empresa C.A.P viagens");
 
-    DateTimeFormatter fmtDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter fmtDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     File arquivo = new File("dados/viagens.txt");
     if(arquivo.exists()){
@@ -72,7 +70,7 @@ public static void main(String[] args) {
                             idososGratuitosCount++;
                         }
 
-                        viagem.getPassagem().add(passagem);
+                        viagem.getPassagens().add(passagem);
                     }
 
                     empresa.adicionarViagem(viagem);
@@ -129,8 +127,8 @@ public static void main(String[] args) {
                 Viagem vBusca = empresa.buscarViagem(codBusca);
                 if (vBusca != null){
                     System.out.println("\nViagem: " + vBusca.getCodigo() + " (" + vBusca.getOrigem() + " -> " + vBusca.getDestino() + ")");
-                    System.out.println("Passagens Vendidas (" + vBusca.getPassagem().size() + "): ");
-                    for(Passagem p : vBusca.getPassagem()){
+                    System.out.println("Passagens Vendidas (" + vBusca.getPassagens().size() + "): ");
+                    for(Passagem p : vBusca.getPassagens()){
                         System.out.println(" Poltrona " + p.getPoltrona() + ": " + p.getPassageiro().getNome() +
                                 " [ " + p.getTipo() + "] - R$ " + p.getValorPago());
                     }
@@ -193,7 +191,7 @@ public static void main(String[] args) {
                     Passageiro pas = new Passageiro(nomeP, docP);
 
                     int idososLivresAtual = 0;
-                    for(Passagem pEx : vVenda.getPassagem()){
+                    for(Passagem pEx : vVenda.getPassagens()){
                         if(pEx.getTipo()  == TipoPassagem.IDOSO && pEx.getValorPago() == 0.0){
                             idososLivresAtual++;
                         }
@@ -217,7 +215,7 @@ public static void main(String[] args) {
                 System.out.println("Código da viagem a remover:");
                 Viagem vRem = empresa.buscarViagem(teclado.nextLine());
                 if(vRem != null){
-                    if(vRem.getPassagem().isEmpty()){
+                    if(vRem.getPassagens().isEmpty()){
                         empresa.removerViagem(vRem);
                         System.out.println("Viagem removida com sucesso!");
                     }else{
@@ -271,7 +269,7 @@ public static void main(String[] args) {
                         double receitaTotal = 0.0;
                         for(Viagem v : empresa.getViagens()){
                             pwOcup.println(v.getCodigo() + " " + v.getPartida().format(fmtDataHora) + " " + v.getOrigem() + " -> " + v.getDestino());
-                            int vendidas = v.getPassagem().size();
+                            int vendidas = v.getPassagens().size();
                             int cap = v.getOnibus().getCapacidade();
                             double pcts = (double) vendidas / cap * 100;
                             pwOcup.println("  " + vendidas + "/" + cap + " (" + String.format("%.1f", pcts + "%) R$ " + String.format("%.2f", v.receita()) + "espera: " + v.getEspera().size()));
@@ -283,7 +281,7 @@ public static void main(String[] args) {
                     for (Viagem v : empresa.getViagens()){
                         try(PrintWriter pwMan = new PrintWriter(new File("saidas/manifesto_" + v.getCodigo() + ".txt"))){
                             pwMan.println("Manifesto da Viagem: " + v.getCodigo());
-                            for(Passagem p : v.getPassagem()){
+                            for(Passagem p : v.getPassagens()){
                                 pwMan.println("Poltrona " + p.getPoltrona() + "; " + p.getPassageiro().getNome() + "; " +
                                         p.getPassageiro().getDocumento() + "; " + p.getTipo() + "; R$ " + p.getValorPago());
                             }
@@ -301,8 +299,8 @@ public static void main(String[] args) {
                         writer.println(v.getCodigo() + ";" + v.getOrigem() + ";" + v.getDestino() + ";" +
                                 v.getPartida().format(fmtDataHora) + ";" + v.getValorBase() + ";" +
                                 v.getOnibus().getPlaca() + ";" + v.getOnibus().getModelo() + ";" +
-                                v.getOnibus().getCapacidade() + ";" + v.getPassagem().size());
-                        for(Passagem p : v.getPassagem()){
+                                v.getOnibus().getCapacidade() + ";" + v.getPassagens().size());
+                        for(Passagem p : v.getPassagens()){
                             writer.println(p.getPoltrona() + ";" + p.getPassageiro().getNome() + ";" +
                                     p.getPassageiro().getDocumento()  + ";" + p.getTipo() + ";" + p.getValorPago());
                         }
