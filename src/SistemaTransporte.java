@@ -100,6 +100,7 @@ public static void main(String[] args) {
         System.out.println("6. Cancelar passagem (com poltronas livres e oferta de espera)");
         System.out.println("7. Buscar viagem pelo código");
         System.out.println("8. Operações específicas (Listar viagens de um dia)");
+        System.out.println("9. Gerar relatórios (Ocupação e Manifesto)");
         System.out.println("10. Salvar dados em arquivo");
         System.out.println("11. Sair");
         System.out.println("Escolha uma opção: ");
@@ -272,7 +273,7 @@ public static void main(String[] args) {
                             int vendidas = v.getPassagens().size();
                             int cap = v.getOnibus().getCapacidade();
                             double pcts = (double) vendidas / cap * 100;
-                            pwOcup.println("  " + vendidas + "/" + cap + " (" + String.format("%.1f", pcts + "%) R$ " + String.format("%.2f", v.receita()) + "espera: " + v.getEspera().size()));
+                            pwOcup.println("  " + vendidas + "/" + cap + " (" + String.format("%.1f", pcts) + "%) R$ " + String.format("%.2f", v.receita()) + "espera: " + v.getEspera().size());
                             receitaTotal += v.receita();
                         }
                         pwOcup.println("Receita total: R$ " + String.format("%.2f", receitaTotal));
@@ -294,7 +295,7 @@ public static void main(String[] args) {
                 break;
             case 10:
                 try(PrintWriter writer = new PrintWriter(new File("dados/viagens.txt"))){
-                    writer.println(empresa.getViagens());
+                    writer.println(empresa.getNome());
                     for(Viagem v : empresa.getViagens()){
                         writer.println(v.getCodigo() + ";" + v.getOrigem() + ";" + v.getDestino() + ";" +
                                 v.getPartida().format(fmtDataHora) + ";" + v.getValorBase() + ";" +
@@ -305,7 +306,7 @@ public static void main(String[] args) {
                                     p.getPassageiro().getDocumento()  + ";" + p.getTipo() + ";" + p.getValorPago());
                         }
                     }
-                    System.out.println("Dados salvos com sucesso em dados/viagens.txt1");
+                    System.out.println("Dados salvos com sucesso em dados/viagens.txt!");
                 }catch (FileNotFoundException e){
                     System.out.println("Erro ao salvar arquivo: " + e.getMessage());
                 }
