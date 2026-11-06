@@ -4,11 +4,11 @@ public class Passagem {
     private double valorPago;
     private Passageiro passageiro;
 
-    public Passagem(int poltrona, TipoPassagem tipo, double valorPago, Passageiro passageito){
+    public Passagem(int poltrona, TipoPassagem tipo, double valorPago, Passageiro passageiro){
         this.poltrona = poltrona;
         this.tipo = tipo;
         this.valorPago= valorPago;
-        this.passageiro = passageito;
+        this.passageiro = passageiro;
     }
 
     public double calcularValor(double base, int idososGratuitos){
@@ -36,7 +36,7 @@ public class Passagem {
     }
 
     public double getValorPago() {
-        return valorPago;
+        return this.valorPago;
     }
 
     public void setValorPago(double valorPago) {
@@ -44,6 +44,6 @@ public class Passagem {
     }
 
     public Passageiro getPassageiro() {
-        return passageiro;
+        return this.passageiro;
     }
 }

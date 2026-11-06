@@ -8,11 +8,11 @@ public class Passageiro {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getDocumento() {
-        return documento;
+        return this.documento;
     }
 
 }

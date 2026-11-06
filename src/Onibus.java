@@ -10,14 +10,14 @@ public class Onibus {
     }
 
     public String getPlaca() {
-        return placa;
+        return this.placa;
     }
 
     public String getModelo() {
-        return modelo;
+        return this.modelo;
     }
 
     public int getCapacidade() {
-        return capacidade;
+        return this.capacidade;
     }
 }
